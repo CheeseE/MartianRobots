@@ -1,6 +1,7 @@
 package com.red.badger.coding.exercise;
 
 import com.red.badger.coding.exercise.command.Command;
+import com.red.badger.coding.exercise.command.SimpleCommand;
 import com.red.badger.coding.exercise.location.Direction;
 import com.red.badger.coding.exercise.location.Planet;
 import com.red.badger.coding.exercise.location.Position;
@@ -59,6 +60,6 @@ public class MartianRobots {
     }
 
     private List<Command> parseCommands(String input) {
-        return input.chars().mapToObj(c -> Command.findByInput((char) c)).collect(Collectors.toList());
+        return input.chars().mapToObj(c -> SimpleCommand.findByInput((char) c)).collect(Collectors.toList());
     }
 }

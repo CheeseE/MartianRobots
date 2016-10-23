@@ -22,6 +22,10 @@ public class Position {
         return y;
     }
 
+    public Position moveInDirection(Direction direction){
+        return new Position(x + direction.getDeltaX(), y + direction.getDeltaY());
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

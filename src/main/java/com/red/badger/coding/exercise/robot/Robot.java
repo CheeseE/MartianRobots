@@ -24,31 +24,27 @@ public class Robot {
         this.planet = grid;
     }
 
-    private void turnLeft() {
+    public void turnLeft() {
         direction = direction.turnLeft();
     }
 
-    private void turnRight() {
+    public void turnRight() {
         direction = direction.turnRight();
     }
 
-    private void moveForeward() {
-        Position newPosition = new Position(position.getX() + direction.getDeltaX(), position.getY() + direction.getDeltaY());
-        if(planet.isWithinBorder(newPosition)) {
+    public void moveForeward() {
+        Position newPosition = position.moveInDirection(direction);
+        if (planet.isWithinBorder(newPosition)) {
             position = newPosition;
-        } else if(!planet.isScented(position)){
+        } else if (!planet.isScented(position)) {
             planet.addScent(position);
             lost = true;
         }
     }
 
-    public void executeCommand(Command command){
-        if(!lost) {
-            switch (command) {
-                case LEFT: turnLeft(); break;
-                case RIGHT: turnRight(); break;
-                case FORWARD: moveForeward();break;
-            }
+    public void executeCommand(Command command) {
+        if (!lost) {
+            command.execute(this);
         }
     }
 
